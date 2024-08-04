@@ -42,25 +42,20 @@ for j in diferencia_cuadrados:
 
     
 desviacion_estandar_manual = (float(suma_diferencia/(longitud -1 )))**0.5
+coeficiente_variacion_manual = (desviacion_estandar_manual / media_manual)
 
 print(f"Media calculada manualmente: {media_manual}")
 print(f"Desviación estándar calculada manualmente: {desviacion_estandar_manual}")
+print(f"Coeficiente de variación calculado manualmente: {coeficiente_variacion_manual:.2f}%")
 
 #Estadísticos descriptivos: Media y Desviación Estándar usando funciones predefinidas
 
 media_predefinida = np.mean(valores)
 desviacion_estandar_predefinida = np.std(valores, ddof=1)
+coeficiente_variacion_predefinida = (desviacion_estandar_predefinida / media_predefinida) 
 
 print(f"Media usando funciones predefinidas: {media_predefinida}")
 print(f"Desviación estándar usando funciones predefinidas: {desviacion_estandar_predefinida}")
-
-# Cálculo manual del coeficiente de variación (escalar)
-coeficiente_variacion_manual = (desviacion_estandar_manual / media_manual)
-
-# Cálculo del coeficiente de variación usando funciones predefinidas (escalar)
-coeficiente_variacion_predefinida = (desviacion_estandar_predefinida / media_predefinida) 
-
-print(f"Coeficiente de variación calculado manualmente: {coeficiente_variacion_manual:.2f}%")
 print(f"Coeficiente de variación usando funciones predefinidas: {coeficiente_variacion_predefinida:.2f}%")
 
 #Graficar el histograma de la señal mediante funciones de python
@@ -72,10 +67,7 @@ plt.show()
 
 #Histograma de la señal manual
 
-# Definir el número de bins
-num_bins = 10
-
-# Calcular el rango de los valores sin numpy
+num_bins = 10 
 min_val = valores[0]
 max_val = valores[0]
 for valor in valores:
@@ -84,15 +76,12 @@ for valor in valores:
     if valor > max_val:
         max_val = valor
 
-# Calcular el tamaño del bin
 bin_ancho = (max_val - min_val) / num_bins
-
-# Inicializar los contadores de bins, contar los valores en cada bin
 bins = [0] * num_bins
 
 for valor in valores:
     bin_cajita = int((valor - min_val) / bin_ancho)
-    if bin_cajita == num_bins:  # Asegurar que el valor máximo esté en el último bin
+    if bin_cajita == num_bins:  
         bin_cajita-= 1
     bins[bin_cajita] += 1
 
@@ -106,16 +95,13 @@ plt.show()
 
 # Generar ruido gaussiano
 ruido_gaussiano = np.random.normal(0, np.std(valores), len(valores))
-
-# Contaminar la señal con ruido gaussiano
 signal_ruido_gaussiano = valores + ruido_gaussiano
 
-# Calcular la potencia de la señal y del ruido
+
 potencia_senal = np.mean(valores ** 2)
 potencia_ruido_gaussiano = np.mean(ruido_gaussiano ** 2)
 print(potencia_ruido_gaussiano,potencia_senal)
 
-# Calcular el SNR
 snr_gaussiano = 10 * np.log10(potencia_senal / potencia_ruido_gaussiano)
 print(f"SNR con ruido gaussiano: {snr_gaussiano:.2f} dB")
 
@@ -136,17 +122,15 @@ for _ in range(num_impulsos):
     posicion = random.randint(0, len(valores) - 1)
     ruido_impulso[posicion] = impulso_amplitud * (1 if random.random() < 0.5 else -1)
 
-# Contaminar la señal con ruido de impulso
+
 signal_ruido_impulso = valores + ruido_impulso
 
-# Calcular la potencia del ruido de impulso
 potencia_ruido_impulso = np.mean(ruido_impulso ** 2)
 
 # Calcular el SNR
 snr_impulso = 10 * np.log10(potencia_senal / potencia_ruido_impulso)
 print(f"SNR con ruido de impulso: {snr_impulso:.2f} dB")
 
-# Graficar la señal contaminada
 plt.plot(signal_ruido_impulso)
 plt.title("Señal con Ruido de Impulso")
 plt.xlabel("# muestras")
@@ -155,18 +139,16 @@ plt.show()
 
 # Generar ruido tipo artefacto
 ruido_artefacto = np.zeros(len(valores))
-num_artefactos = int(0.01 * len(valores))  # 1% de la señal son artefactos
-artefacto_amplitud = np.max(np.abs(valores)) * 2  # amplitud de los artefactos
-artefacto_duracion = 10  # duración de cada artefacto en muestras
+num_artefactos = int(0.01 * len(valores))  
+artefacto_amplitud = np.max(np.abs(valores)) * 2  
+artefacto_duracion = 10 
 
 for _ in range(num_artefactos):
     posicion_inicio = random.randint(0, len(valores) - artefacto_duracion)
     ruido_artefacto[posicion_inicio:posicion_inicio + artefacto_duracion] = artefacto_amplitud
 
-# Contaminar la señal con ruido tipo artefacto
-signal_ruido_artefacto = valores + ruido_artefacto
 
-# Calcular la potencia del ruido tipo artefacto
+signal_ruido_artefacto = valores + ruido_artefacto
 potencia_ruido_artefacto = np.mean(ruido_artefacto ** 2)
 
 # Calcular el SNR
@@ -179,3 +161,4 @@ plt.title("Señal con Ruido Tipo Artefacto")
 plt.xlabel("# muestras")
 plt.ylabel("Amplitud")
 plt.show()
+
