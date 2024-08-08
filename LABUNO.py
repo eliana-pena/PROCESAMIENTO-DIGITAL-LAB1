@@ -21,7 +21,8 @@ longitud =len(valores) #numero de muestras
 # Graficar la señal
 plt.plot(valores)
 plt.title("Señal Fisiológica")
-plt.xlabel("# muestras")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("EDA (uS)")
 plt.show()
 
 "ESTADÍSTICOS DESCRIPTIVOS"
@@ -59,15 +60,15 @@ print(f"Desviación estándar usando funciones predefinidas: {desviacion_estanda
 print(f"Coeficiente de variación usando funciones predefinidas: {coeficiente_variacion_predefinida:.2f}%")
 
 #Graficar el histograma de la señal mediante funciones de python
-plt.hist(valores, bins=10,edgecolor='black')
+plt.hist(valores, bins=8,edgecolor='black')
 plt.title("Histograma de la señal con funciones")
-plt.xlabel("Valor")
+plt.xlabel("Valor (uS)")
 plt.ylabel("# muestra")
 plt.show()
 
 #Histograma de la señal manual
 
-num_bins = 10 
+num_bins = 8 
 min_val = valores[0]
 max_val = valores[0]
 for valor in valores:
@@ -89,7 +90,7 @@ for valor in valores:
 bin_borde = [min_val + i * bin_ancho for i in range(num_bins + 1)]
 plt.bar(bin_borde[:-1], bins, width=bin_ancho, edgecolor='black')
 plt.title("Histograma de la señal (manual)")
-plt.xlabel("Valor")
+plt.xlabel("Valor (uS)")
 plt.ylabel("# muestra")
 plt.show()
 
@@ -108,14 +109,14 @@ print(f"SNR con ruido gaussiano: {snr_gaussiano:.2f} dB")
 # Graficar la señal contaminada
 plt.plot(signal_ruido_gaussiano)
 plt.title("Señal con Ruido Gaussiano")
-plt.xlabel("# muestras")
-plt.ylabel("Amplitud")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("EDA (uS)")
 plt.show()
 
 
 # Generar ruido de impulso
 ruido_impulso = np.zeros(len(valores))
-num_impulsos = int(0.01 * len(valores))  # 1% de la señal son impulsos
+num_impulsos = int(0.01 * len(valores))  
 impulso_amplitud = np.max(np.abs(valores)) * 2  # amplitud de los impulsos
 
 for _ in range(num_impulsos):
@@ -133,8 +134,8 @@ print(f"SNR con ruido de impulso: {snr_impulso:.2f} dB")
 
 plt.plot(signal_ruido_impulso)
 plt.title("Señal con Ruido de Impulso")
-plt.xlabel("# muestras")
-plt.ylabel("Amplitud")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("EDA (uS)")
 plt.show()
 
 # Generar ruido tipo artefacto
@@ -158,7 +159,7 @@ print(f"SNR con ruido tipo artefacto: {snr_artefacto:.2f} dB")
 # Graficar la señal contaminada
 plt.plot(signal_ruido_artefacto)
 plt.title("Señal con Ruido Tipo Artefacto")
-plt.xlabel("# muestras")
-plt.ylabel("Amplitud")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("EDA (uS)")
 plt.show()
 
