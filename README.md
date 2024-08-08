@@ -42,8 +42,11 @@ plt.title("Señal Fisiológica")
 plt.xlabel("# muestras")
 plt.show()
 ```
+<p align="center">
+  <img src="" alt="Descripción de la imagen">
+</p>
 Obtenemos los valores de la señal fisiológica y los graficamos para visualizar la señal original.
-}}
+
 ## Estadísticos Descriptivos
 ### Cálculo Manual
 ```python
@@ -103,6 +106,9 @@ plt.xlabel("Valor")
 plt.ylabel("# muestra")
 plt.show()
 ```
+<p align="center">
+  <img src="HISTOGRAMA.png" alt="Descripción de la imagen">
+</p>
 Creamos histogramas tanto utilizando funciones de Python como manualmente para visualizar la distribución de la señal.
 ## Contaminación de la Señal
 ### Ruido Gaussiano
