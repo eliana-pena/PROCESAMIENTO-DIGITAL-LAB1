@@ -21,6 +21,7 @@ Este repositorio contiene un código para analizar y contaminar una señal fisio
   - `random`
 
 ## Descripción del Código
+Este laboratorio tiene como objetivo caracterizar una señal descargada de la página de PhysioNet para calcular sus estadísticos descriptivos, como la media, la desviación estándar y el coeficiente de variación. En la segunda parte del laboratorio, se busca contaminar la señal con ruido, para lo cual se utilizarán diferentes tipos de ruido, como ruido gaussiano, de artefacto y de impulso, con el fin de determinar su relación señal-ruido (SNR).
 ### Importación de Librerías
 
 ```python
@@ -42,6 +43,7 @@ plt.xlabel("# muestras")
 plt.show()
 ```
 Obtenemos los valores de la señal fisiológica y los graficamos para visualizar la señal original.
+}}
 ## Estadísticos Descriptivos
 ### Cálculo Manual
 ```python
