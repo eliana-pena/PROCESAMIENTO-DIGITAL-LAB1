@@ -105,6 +105,11 @@ print(potencia_ruido_gaussiano,potencia_senal)
 
 snr_gaussiano = 10 * np.log10(potencia_senal / potencia_ruido_gaussiano)
 print(f"SNR con ruido gaussiano: {snr_gaussiano:.2f} dB")
+# Interpretar el resultado
+if snr_gaussiano < 10:
+    print("El SNR es bajo, la señal está significativamente contaminada por ruido.")
+else:
+    print("El SNR es alto, la señal es relativamente fuerte en comparación con el ruido.")
 
 # Graficar la señal contaminada
 plt.plot(signal_ruido_gaussiano)
@@ -131,6 +136,11 @@ potencia_ruido_impulso = np.mean(ruido_impulso ** 2)
 # Calcular el SNR
 snr_impulso = 10 * np.log10(potencia_senal / potencia_ruido_impulso)
 print(f"SNR con ruido de impulso: {snr_impulso:.2f} dB")
+# Interpretar el resultado
+if snr_impulso < 10:
+    print("El SNR es bajo, la señal está significativamente contaminada por ruido.")
+else:
+    print("El SNR es alto, la señal es relativamente fuerte en comparación con el ruido.")
 
 plt.plot(signal_ruido_impulso)
 plt.title("Señal con Ruido de Impulso")
@@ -155,6 +165,11 @@ potencia_ruido_artefacto = np.mean(ruido_artefacto ** 2)
 # Calcular el SNR
 snr_artefacto = 10 * np.log10(potencia_senal / potencia_ruido_artefacto)
 print(f"SNR con ruido tipo artefacto: {snr_artefacto:.2f} dB")
+# Interpretar el resultado
+if snr_artefacto < 10:
+    print("El SNR es bajo, la señal está significativamente contaminada por ruido.")
+else:
+    print("El SNR es alto, la señal es relativamente fuerte en comparación con el ruido.")
 
 # Graficar la señal contaminada
 plt.plot(signal_ruido_artefacto)
