@@ -43,7 +43,7 @@ plt.xlabel("# muestras")
 plt.show()
 ```
 <p align="center">
-  <img src="" alt="Descripción de la imagen">
+  <img src="SENA.png" alt="Gráfica de la señal">
 </p>
 Obtenemos los valores de la señal fisiológica y los graficamos para visualizar la señal original.
 
@@ -107,8 +107,9 @@ plt.ylabel("# muestra")
 plt.show()
 ```
 <p align="center">
-  <img src="HISTOGRAMA.png" alt="Descripción de la imagen">
+  <img src="HISTOGRAMA.png" alt="Gráfica del histograma de la señal">
 </p>
+
 Creamos histogramas tanto utilizando funciones de Python como manualmente para visualizar la distribución de la señal.
 ## Contaminación de la Señal
 ### Ruido Gaussiano
@@ -131,6 +132,10 @@ plt.xlabel("# muestras")
 plt.ylabel("Amplitud")
 plt.show()
 ```
+<p align="center">
+  <img src="GAUS.png" alt="Gráfica del histograma de la señal">
+</p>
+
 ### Ruido de Impulso
 ```python
 # Generar ruido de impulso
@@ -154,6 +159,10 @@ plt.xlabel("# muestras")
 plt.ylabel("Amplitud")
 plt.show()
 ```
+<p align="center">
+  <img src="IMPULSO.png" alt="Gráfica del histograma de la señal">
+</p>
+
 ### Ruido Tipo Artefacto
 ```python
 # Generar ruido tipo artefacto
@@ -178,6 +187,10 @@ plt.xlabel("# muestras")
 plt.ylabel("Amplitud")
 plt.show()
 ```
+<p align="center">
+  <img src="ARTE.png" alt="Gráfica del histograma de la señal">
+</p>
+
 En esta sección, contaminamos la señal original con diferentes tipos de ruido (gaussiano, de impulso y tipo artefacto) y calculamos el SNR para cada tipo de ruido. 
 Luego, graficamos la señal contaminada para visualizar el impacto del ruido. Este proyecto demuestra cómo analizar y procesar una señal fisiológica, 
 calculando estadísticas descriptivas, creando histogramas, y evaluando el impacto del ruido en la señal a través de la relación señal-ruido (SNR). 
